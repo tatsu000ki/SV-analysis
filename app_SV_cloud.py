@@ -10,7 +10,7 @@ st.set_page_config(page_title="Honda 競合・流出分析ダッシュボード"
 # --- 1. データ読み込み & 正規化前処理 ---
 @st.cache_data
 def load_data():
-    csv_path = "data/input/SV/NVES_Honda_Analysis_Cloud.csv"
+    csv_path = "NVES_Honda_Analysis_Cloud.csv"
     data = pd.read_csv(csv_path, encoding='utf-8-sig')
     
     brand_mapping = {'Mercedes': 'Mercedes-Benz', 'Vinfast': 'VinFast'}
@@ -40,7 +40,7 @@ def load_data():
 def load_jato_specs():
     """JATOデータから車両スペック情報を読み込み"""
     try:
-        jato_path = "data/input/JATO_USA_MMix.csv"
+        jato_path = "JATO_USA_MMix.csv"
         jato = pd.read_csv(jato_path, encoding='shift-jis')
         
         # カラム名を取得（エンコーディング問題回避）
@@ -356,3 +356,4 @@ with tab_compare:
         st.plotly_chart(fig_price_comp, use_container_width=True)
     else:
         st.info("価格比較データが不足しています")
+
